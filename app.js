@@ -23,10 +23,6 @@ app.get('/games', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
-
 app.post('/games', (req, res) => {
     const { title, description, image, available } = req.body;
 
