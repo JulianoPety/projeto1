@@ -19,7 +19,7 @@ const gameController = {
     createGame: (req, res) => {
         game.create(req.body, (err, results) => {
             if (err) return res.status(500).json({ error: err });
-            res.json(results);
+            res.json(results?.insertId > 0 ? 'Inserido com sucesso!' : 'Erro ao inserir!');
         });
     },
     
@@ -39,4 +39,6 @@ const gameController = {
         });
     }
 };
+ 
+module.exports = gameController;
 

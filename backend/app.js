@@ -5,7 +5,7 @@ const PORT = 3000;
 const gameRoutes = require('./routes/gameRoutes');
 
 app.use(express.json());
-app.use('/games', gameRoutes);
+app.use('/api', gameRoutes);
 
 app.get(('/'), (req, res) => {
     res.send('Servidor funcionando!');
