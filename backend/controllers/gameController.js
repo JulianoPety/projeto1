@@ -5,7 +5,7 @@ const gameController = {
         game.getAll((err, results) => {
             if (err) return res.status(500).json({ error: err });
             res.json(results); 
-        })
+        });
     },
     
     getGameById: (req, res) => {
@@ -19,7 +19,7 @@ const gameController = {
     createGame: (req, res) => {
         game.create(req.body, (err, results) => {
             if (err) return res.status(500).json({ error: err });
-            res.json(results?.insertId > 0 ? 'Inserido com sucesso!' : 'Erro ao inserir!');
+            res.json(results?.insertId > 0 ? results : 'Erro ao inserir!');
         });
     },
     
