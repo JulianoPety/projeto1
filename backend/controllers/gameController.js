@@ -12,14 +12,14 @@ const gameController = {
         const { id } = req.params;
         game.getById(id, (err, results) => {
             if (err) return res.status(500).json({ error: err });
-            res.json(results[0]);
+            res.json(results > 0 ? results : 'Jogo não encontrado');
         });
     },
     
     createGame: (req, res) => {
-        game.create(req.body, (err, results) => {
+        game.create(req.body, (err, result) => {
             if (err) return res.status(500).json({ error: err });
-            res.json(results?.insertId > 0 ? results : 'Erro ao inserir!');
+            res.json(result > 0 ? result : 'Erro ao inserir!');
         });
     },
     
@@ -27,7 +27,7 @@ const gameController = {
         const { id } = req.params;
         game.update(id, req.body, (err, results) => {
             if (err) return res.status(500).json({ error: err });
-            res.json ({ message: 'Jogo atualizado com sucesso!' })
+            res.json ({ message: 'Jogo atualizado com sucesso!' });
         });
     },
     
